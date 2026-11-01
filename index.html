@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huila Esencia | Turismo local en el Huila</title>
+  <meta name="description" content="Rutas pequeñas por el Desierto de la Tatacoa, San Agustín, el Estrecho del Magdalena y el Salto de Bordones. Guías locales y grupos reducidos.">
+  <meta name="theme-color" content="#14261D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+      /* 60 %: arena */
+      --color-arena-50: #FBF7F0;
+      --color-arena-100: #F5EDDF;
+      --color-arena-200: #EADCC6;
+      --color-arena-300: #DCC6A6;
+      --color-arena-400: #C9A87F;
+
+      /* 30 %: bosque */
+      --color-bosque-50: #EEF4EF;
+      --color-bosque-100: #D8E5DA;
+      --color-bosque-200: #B3CCB7;
+      --color-bosque-300: #86AC8D;
+      --color-bosque-400: #5C8A67;
+      --color-bosque-500: #3F6B4D;
+      --color-bosque-600: #2F543C;
+      --color-bosque-700: #264432;
+      --color-bosque-800: #1B3327;
+      --color-bosque-900: #14261D;
+      --color-bosque-950: #0C1812;
+
+      /* 10 %: terracota */
+      --color-terracota-50: #FCF1EA;
+      --color-terracota-100: #F8DFCF;
+      --color-terracota-200: #F0BE9F;
+      --color-terracota-300: #E59A70;
+      --color-terracota-400: #D97747;
+      --color-terracota-500: #C25E2F;
+      --color-terracota-600: #A64A24;
+      --color-terracota-700: #853A1E;
+      --color-terracota-800: #6B301B;
+      --color-terracota-900: #582A1A;
+
+      /* Colores semánticos */
+      --color-exito: #2E7D5B;
+      --color-error: #B23A3A;
+      --color-advertencia: #94600F;
+
+      --shadow-suave: 0 18px 50px -20px rgb(20 38 29 / 0.35);
+    }
+
+    /* Modo oscuro controlado con una clase en <html> */
+    @custom-variant dark (&:where(.dark, .dark *));
+
+    @layer base {
+      body {
+        text-rendering: optimizeLegibility;
+      }
+
+      ::selection {
+        background-color: var(--color-terracota-200);
+        color: var(--color-bosque-950);
+      }
+
+      :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+        outline: 3px solid var(--color-terracota-500);
+        outline-offset: 3px;
+        border-radius: 0.35rem;
+      }
+
+      .dark :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+        outline-color: var(--color-terracota-300);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *, ::before, ::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    }
+  </style>
+
+  <script>
+    // Se ejecuta antes de pintar para evitar el destello de tema claro.
+    (function () {
+      try {
+        var guardado = localStorage.getItem("tema");
+        var prefiereOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (guardado === "oscuro" || (!guardado && prefiereOscuro)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body class="bg-arena-50 font-sans text-bosque-900 antialiased dark:bg-bosque-950 dark:text-arena-100">
+
+  <a href="#contenido"
+     class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-bosque-900 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-arena-50">
+    Saltar al contenido principal
+  </a>
+
+  <!-- ============ ENCABEZADO ============ -->
+  <header id="site-header"
+          class="sticky top-0 z-50 border-b border-bosque-900/10 bg-arena-50/95 backdrop-blur-md transition-shadow duration-300 dark:border-arena-100/10 dark:bg-bosque-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+
+      <a href="#inicio" class="flex items-center gap-3 rounded-lg">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-bosque-900 text-arena-50 dark:bg-arena-50 dark:text-bosque-950">
+          <svg viewBox="0 0 64 64" class="h-7 w-7" aria-hidden="true" fill="none">
+            <circle cx="43" cy="20" r="7" fill="#D97747"/>
+            <path d="M5 50 22 25l11 15 7-9 19 19H5Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-xl font-semibold tracking-tight">Huila Esencia</span>
+          <span class="mt-1 block text-[11px] font-medium uppercase tracking-[0.18em] text-bosque-600 dark:text-arena-300">Turismo con raíz</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">
+        <a href="#destinos" data-nav="destinos" class="text-sm font-medium text-bosque-700 transition-colors hover:text-terracota-600 dark:text-arena-200 dark:hover:text-terracota-300">Destinos</a>
+        <a href="#nosotros" data-nav="nosotros" class="text-sm font-medium text-bosque-700 transition-colors hover:text-terracota-600 dark:text-arena-200 dark:hover:text-terracota-300">Nosotros</a>
+        <a href="#galeria" data-nav="galeria" class="text-sm font-medium text-bosque-700 transition-colors hover:text-terracota-600 dark:text-arena-200 dark:hover:text-terracota-300">Galería</a>
+        <a href="#preguntas" data-nav="preguntas" class="text-sm font-medium text-bosque-700 transition-colors hover:text-terracota-600 dark:text-arena-200 dark:hover:text-terracota-300">Preguntas</a>
+        <a href="#contacto" data-nav="contacto" class="text-sm font-medium text-bosque-700 transition-colors hover:text-terracota-600 dark:text-arena-200 dark:hover:text-terracota-300">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false"
+                class="grid h-11 w-11 place-items-center rounded-full border border-bosque-900/15 text-bosque-800 transition-colors hover:bg-bosque-900/5 dark:border-arena-100/20 dark:text-arena-100 dark:hover:bg-arena-50/10">
+          <svg id="icon-sun" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+          </svg>
+          <svg id="icon-moon" viewBox="0 0 24 24" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+          </svg>
+        </button>
+
+        <a href="#contacto"
+           class="hidden rounded-full bg-terracota-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-terracota-700 sm:inline-flex dark:bg-terracota-400 dark:text-bosque-950 dark:hover:bg-terracota-300">
+          Reservar
+        </a>
+
+        <button id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"
+                class="grid h-11 w-11 place-items-center rounded-full border border-bosque-900/15 text-bosque-800 transition-colors hover:bg-bosque-900/5 lg:hidden dark:border-arena-100/20 dark:text-arena-100 dark:hover:bg-arena-50/10">
+          <svg id="icon-menu" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+          <svg id="icon-close" viewBox="0 0 24 24" class="hidden h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden border-t border-bosque-900/10 bg-arena-50 px-4 pb-6 pt-2 lg:hidden dark:border-arena-100/10 dark:bg-bosque-950">
+      <nav class="mx-auto flex max-w-7xl flex-col" aria-label="Navegación móvil">
+        <a href="#destinos" class="menu-link rounded-lg px-3 py-3 text-base font-medium hover:bg-bosque-900/5 dark:hover:bg-arena-50/10">Destinos</a>
+        <a href="#nosotros" class="menu-link rounded-lg px-3 py-3 text-base font-medium hover:bg-bosque-900/5 dark:hover:bg-arena-50/10">Nosotros</a>
+        <a href="#galeria" class="menu-link rounded-lg px-3 py-3 text-base font-medium hover:bg-bosque-900/5 dark:hover:bg-arena-50/10">Galería</a>
+        <a href="#preguntas" class="menu-link rounded-lg px-3 py-3 text-base font-medium hover:bg-bosque-900/5 dark:hover:bg-arena-50/10">Preguntas</a>
+        <a href="#contacto" class="menu-link rounded-lg px-3 py-3 text-base font-medium hover:bg-bosque-900/5 dark:hover:bg-arena-50/10">Contacto</a>
+        <a href="#contacto" class="menu-link mt-3 rounded-full bg-terracota-600 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-terracota-700 dark:bg-terracota-400 dark:text-bosque-950">Reservar una ruta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="relative isolate flex min-h-[88svh] items-end overflow-hidden">
+      <img src="assets/tatacoa-2.webp"
+           alt="Formaciones de tierra roja del Desierto de la Tatacoa con turistas caminando entre los laberintos y montañas al fondo"
+           class="absolute inset-0 -z-20 h-full w-full object-cover" fetchpriority="high">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-bosque-950/70 via-bosque-950/45 to-bosque-950/95"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-bosque-950/80 via-bosque-950/20 to-transparent"></div>
+
+      <div class="mx-auto w-full max-w-7xl px-4 pb-12 pt-24 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
+        <div class="max-w-3xl">
+          <p class="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-arena-200 sm:text-sm">
+            <span class="h-px w-8 bg-terracota-400"></span>
+            Turismo local · Huila, Colombia
+          </p>
+
+          <h1 class="mt-5 font-display text-5xl font-semibold leading-[0.95] tracking-tight text-arena-50 sm:text-6xl lg:text-7xl xl:text-8xl">
+            El Huila no se cuenta.
+            <span class="block italic text-terracota-300">Se recorre.</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-arena-100/90 sm:text-lg">
+            Rutas cortas por el desierto, las montañas y los ríos del Huila. Grupos pequeños,
+            guías de la región y tiempo suficiente para mirar sin afán.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#destinos"
+               class="inline-flex items-center justify-center gap-2 rounded-full bg-terracota-500 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-bosque-950/30 transition-colors hover:bg-terracota-600">
+              Ver destinos
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/>
+              </svg>
+            </a>
+            <a href="#contacto"
+               class="inline-flex items-center justify-center rounded-full border border-arena-50/40 bg-arena-50/5 px-7 py-4 text-sm font-semibold text-arena-50 backdrop-blur-sm transition-colors hover:bg-arena-50/15">
+              Planear mi viaje
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-arena-100/80">
+            <span class="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-terracota-300" fill="currentColor" aria-hidden="true">
+                <path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/>
+              </svg>
+              4,9 / 5 en reseñas
+            </span>
+            <span class="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-terracota-300" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+              Neiva · Isnos · Villavieja
+            </span>
+            <span class="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-terracota-300" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="9" cy="8" r="3"/><path stroke-linecap="round" d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M17.5 20a5.5 5.5 0 0 0-3-4.9"/>
+              </svg>
+              Grupos de máximo 12
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#destinos" class="absolute bottom-5 right-5 hidden h-12 w-12 place-items-center rounded-full border border-arena-50/30 text-arena-50 transition-colors hover:bg-arena-50/10 lg:grid" aria-label="Bajar a la sección de destinos">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m-6-6 6 6 6-6"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ============ DESTINOS ============ -->
+    <section id="destinos" class="scroll-mt-24 py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-600 dark:text-terracota-300">Rutas que valen la pena</p>
+          <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Cuatro paisajes, un solo departamento.</h2>
+          <p class="mt-4 text-base leading-relaxed text-bosque-700 dark:text-arena-200">
+            Armamos cada salida con transporte, guía y alimentación incluidos. Usted solo escoge
+            la fecha y nosotros nos encargamos del resto.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+
+          <!-- Tarjeta 1 -->
+          <article class="group flex flex-col overflow-hidden rounded-3xl border border-bosque-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-suave dark:border-arena-100/10 dark:bg-bosque-900">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="assets/tatacoa.webp" alt="Vista amplia de los laberintos de tierra roja del Desierto de la Tatacoa bajo un cielo con nubes"
+                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+              <span class="absolute left-4 top-4 rounded-full bg-bosque-950/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-arena-50 backdrop-blur-sm">2 días</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="font-display text-2xl font-semibold">Desierto de la Tatacoa</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                Noches de estrellas, tierra roja y el observatorio astronómico de Villavieja.
+              </p>
+              <div class="mt-5 flex items-end justify-between gap-3 border-t border-bosque-900/10 pt-4 dark:border-arena-100/10">
+                <div>
+                  <p class="text-[11px] uppercase tracking-wide text-bosque-500 dark:text-arena-400">Desde</p>
+                  <p class="font-semibold">$420.000 <span class="text-xs font-normal text-bosque-500 dark:text-arena-400">COP</span></p>
+                </div>
+                <button type="button" data-destino="tatacoa"
+                        class="rounded-full border border-terracota-600/30 px-4 py-2 text-xs font-semibold text-terracota-700 transition-colors hover:bg-terracota-600 hover:text-white dark:border-terracota-300/40 dark:text-terracota-300 dark:hover:bg-terracota-400 dark:hover:text-bosque-950">
+                  Conocer
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="group flex flex-col overflow-hidden rounded-3xl border border-bosque-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-suave dark:border-arena-100/10 dark:bg-bosque-900">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="assets/san-agustin.webp" alt="Estatua de piedra del Parque Arqueológico de San Agustín protegida por un techo de guadua"
+                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+              <span class="absolute left-4 top-4 rounded-full bg-bosque-950/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-arena-50 backdrop-blur-sm">1 día</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="font-display text-2xl font-semibold">San Agustín</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                Estatuas milenarias y montañas declaradas Patrimonio de la Humanidad.
+              </p>
+              <div class="mt-5 flex items-end justify-between gap-3 border-t border-bosque-900/10 pt-4 dark:border-arena-100/10">
+                <div>
+                  <p class="text-[11px] uppercase tracking-wide text-bosque-500 dark:text-arena-400">Desde</p>
+                  <p class="font-semibold">$180.000 <span class="text-xs font-normal text-bosque-500 dark:text-arena-400">COP</span></p>
+                </div>
+                <button type="button" data-destino="san-agustin"
+                        class="rounded-full border border-terracota-600/30 px-4 py-2 text-xs font-semibold text-terracota-700 transition-colors hover:bg-terracota-600 hover:text-white dark:border-terracota-300/40 dark:text-terracota-300 dark:hover:bg-terracota-400 dark:hover:text-bosque-950">
+                  Conocer
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="group flex flex-col overflow-hidden rounded-3xl border border-bosque-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-suave dark:border-arena-100/10 dark:bg-bosque-900">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="assets/estrecho-magdalena.webp" alt="Río Magdalena pasando entre grandes rocas grises en el Estrecho del Magdalena"
+                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+              <span class="absolute left-4 top-4 rounded-full bg-bosque-950/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-arena-50 backdrop-blur-sm">Medio día</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="font-display text-2xl font-semibold">Estrecho del Magdalena</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                El río más importante del país pasa por una garganta de roca de apenas dos metros.
+              </p>
+              <div class="mt-5 flex items-end justify-between gap-3 border-t border-bosque-900/10 pt-4 dark:border-arena-100/10">
+                <div>
+                  <p class="text-[11px] uppercase tracking-wide text-bosque-500 dark:text-arena-400">Desde</p>
+                  <p class="font-semibold">$120.000 <span class="text-xs font-normal text-bosque-500 dark:text-arena-400">COP</span></p>
+                </div>
+                <button type="button" data-destino="magdalena"
+                        class="rounded-full border border-terracota-600/30 px-4 py-2 text-xs font-semibold text-terracota-700 transition-colors hover:bg-terracota-600 hover:text-white dark:border-terracota-300/40 dark:text-terracota-300 dark:hover:bg-terracota-400 dark:hover:text-bosque-950">
+                  Conocer
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4 -->
+          <article class="group flex flex-col overflow-hidden rounded-3xl border border-bosque-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-suave dark:border-arena-100/10 dark:bg-bosque-900">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="assets/salto-bordones.webp" alt="Salto de Bordones cayendo entre una montaña cubierta de selva verde en Isnos"
+                   class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+              <span class="absolute left-4 top-4 rounded-full bg-bosque-950/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-arena-50 backdrop-blur-sm">1 día</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="font-display text-2xl font-semibold">Salto de Bordones</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                Una caída de agua de más de 400 metros escondida en la selva de Isnos.
+              </p>
+              <div class="mt-5 flex items-end justify-between gap-3 border-t border-bosque-900/10 pt-4 dark:border-arena-100/10">
+                <div>
+                  <p class="text-[11px] uppercase tracking-wide text-bosque-500 dark:text-arena-400">Desde</p>
+                  <p class="font-semibold">$150.000 <span class="text-xs font-normal text-bosque-500 dark:text-arena-400">COP</span></p>
+                </div>
+                <button type="button" data-destino="bordones"
+                        class="rounded-full border border-terracota-600/30 px-4 py-2 text-xs font-semibold text-terracota-700 transition-colors hover:bg-terracota-600 hover:text-white dark:border-terracota-300/40 dark:text-terracota-300 dark:hover:bg-terracota-400 dark:hover:text-bosque-950">
+                  Conocer
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="mt-8 text-sm text-bosque-500 dark:text-arena-400">
+          Los precios son por persona y salen desde Neiva. No incluyen tiquetes aéreos ni gastos personales.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section id="nosotros" class="scroll-mt-24 bg-arena-100/70 py-20 sm:py-24 dark:bg-bosque-900/40">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+
+        <div class="relative">
+          <div class="overflow-hidden rounded-[2rem]">
+            <img src="assets/hero-tatacoa.webp"
+                 alt="Paisaje amplio del Desierto de la Tatacoa con vegetación y montañas lejanas"
+                 class="aspect-[4/3] w-full object-cover" loading="lazy">
+          </div>
+          <div class="absolute -bottom-8 -right-2 w-40 overflow-hidden rounded-2xl border-4 border-arena-50 shadow-xl sm:-right-6 sm:w-52 dark:border-bosque-950">
+            <img src="assets/san-agustin.webp" alt="Detalle de una estatua de piedra de San Agustín" class="aspect-square w-full object-cover" loading="lazy">
+          </div>
+          <div class="absolute -left-2 top-6 rounded-2xl bg-bosque-900 px-4 py-3 text-arena-50 shadow-lg sm:-left-6">
+            <p class="font-display text-2xl font-semibold leading-none">12</p>
+            <p class="mt-1 text-[11px] uppercase tracking-wide text-arena-300">años en el Huila</p>
+          </div>
+        </div>
+
+        <div class="pt-6 lg:pt-0">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-600 dark:text-terracota-300">Quiénes somos</p>
+          <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Somos de aquí, y eso se nota.</h2>
+          <p class="mt-5 text-base leading-relaxed text-bosque-700 dark:text-arena-200">
+            Huila Esencia nació en Neiva con una idea sencilla: mostrar el departamento sin
+            inventarlo. Trabajamos con guías que crecieron en estos pueblos, con fincas de café
+            y con familias que abren las puertas de su casa para que un viaje se sienta más
+            cercano.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-bosque-700 dark:text-arena-200">
+            No hacemos recorridos gigantes ni paramos en tiendas de souvenirs por compromiso.
+            Preferimos caminar despacio, contar bien cada lugar y dejar que la gente del Huila
+            sea la que hable.
+          </p>
+
+          <ul class="mt-8 space-y-4">
+            <li class="flex gap-3">
+              <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bosque-900/10 text-bosque-800 dark:bg-arena-50/10 dark:text-arena-100">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold">Guías locales certificados</p>
+                <p class="text-sm text-bosque-600 dark:text-arena-300">Personas de la región que conocen las rutas, los horarios y las historias.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bosque-900/10 text-bosque-800 dark:bg-arena-50/10 dark:text-arena-100">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="9" cy="8" r="3"/><path stroke-linecap="round" d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M17.5 20a5.5 5.5 0 0 0-3-4.9"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold">Grupos pequeños</p>
+                <p class="text-sm text-bosque-600 dark:text-arena-300">Máximo 12 personas por salida. Menos filas, más conversación.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bosque-900/10 text-bosque-800 dark:bg-arena-50/10 dark:text-arena-100">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.5-2.5-7-5.5-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 12c0 3.5-2.5 6.5-7 9Z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold">Turismo responsable</p>
+                <p class="text-sm text-bosque-600 dark:text-arena-300">No dejamos basura, no tocamos las estatuas y compramos a negocios del camino.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALERÍA ============ -->
+    <section id="galeria" class="scroll-mt-24 py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div class="max-w-2xl">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-600 dark:text-terracota-300">Momentos de viaje</p>
+            <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Lo que se ve en el camino.</h2>
+          </div>
+          <p class="max-w-sm text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+            Fotos de nuestras salidas. Todas son de lugares reales del Huila, no de un banco de imágenes genérico.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <figure class="group relative col-span-2 row-span-2 overflow-hidden rounded-3xl">
+            <img src="assets/tatacoa-2.webp" alt="Turistas caminando entre las formaciones rojas de la Tatacoa"
+                 class="h-full min-h-[280px] w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bosque-950/90 to-transparent p-5 text-sm font-medium text-arena-50">
+              Desierto de la Tatacoa · Villavieja
+            </figcaption>
+          </figure>
+          <figure class="group relative overflow-hidden rounded-3xl">
+            <img src="assets/salto-bordones.webp" alt="Salto de Bordones rodeado de selva"
+                 class="aspect-square w-full object-cover object-left transition-transform duration-700 group-hover:scale-105" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bosque-950/90 to-transparent p-4 text-xs font-medium text-arena-50">
+              Salto de Bordones · Isnos
+            </figcaption>
+          </figure>
+          <figure class="group relative overflow-hidden rounded-3xl">
+            <img src="assets/estrecho-magdalena.webp" alt="Rocas y agua del Estrecho del Magdalena"
+                 class="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bosque-950/90 to-transparent p-4 text-xs font-medium text-arena-50">
+              Estrecho del Magdalena
+            </figcaption>
+          </figure>
+          <figure class="group relative col-span-2 overflow-hidden rounded-3xl">
+            <img src="assets/san-agustin.webp" alt="Estatuas del Parque Arqueológico de San Agustín"
+                 class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bosque-950/90 to-transparent p-4 text-xs font-medium text-arena-50">
+              Parque Arqueológico · San Agustín
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="bg-bosque-900 py-20 text-arena-50 sm:py-24 dark:bg-bosque-900/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-300">Lo que dicen</p>
+          <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Viajeros que volvieron a contar.</h2>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <figure class="rounded-3xl border border-arena-50/10 bg-bosque-950/40 p-6">
+            <div class="flex gap-1 text-terracota-300" role="img" aria-label="5 de 5 estrellas">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+            </div>
+            <blockquote class="mt-4 text-sm leading-relaxed text-arena-100/90">
+              “Fuimos a la Tatacoa con mi hermana y terminamos viendo estrellas hasta la medianoche.
+              El guía sabía muchísimo y nunca nos apuró.”
+            </blockquote>
+            <figcaption class="mt-5 text-sm">
+              <span class="font-semibold">Laura Gómez</span>
+              <span class="block text-xs text-arena-300">Bogotá</span>
+            </figcaption>
+          </figure>
+
+          <figure class="rounded-3xl border border-arena-50/10 bg-bosque-950/40 p-6">
+            <div class="flex gap-1 text-terracota-300" role="img" aria-label="5 de 5 estrellas">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+            </div>
+            <blockquote class="mt-4 text-sm leading-relaxed text-arena-100/90">
+              “San Agustín me pareció impresionante. Lo que más me gustó fue que el tour no era
+              solo fotos: nos explicaron quién había hecho las estatuas y por qué.”
+            </blockquote>
+            <figcaption class="mt-5 text-sm">
+              <span class="font-semibold">Andrés Muñoz</span>
+              <span class="block text-xs text-arena-300">Cali</span>
+            </figcaption>
+          </figure>
+
+          <figure class="rounded-3xl border border-arena-50/10 bg-bosque-950/40 p-6">
+            <div class="flex gap-1 text-terracota-300" role="img" aria-label="5 de 5 estrellas">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6Z"/></svg>
+            </div>
+            <blockquote class="mt-4 text-sm leading-relaxed text-arena-100/90">
+              “Reservamos desde la página y todo salió como decía. Nos recogieron en Neiva y
+              el pago fue sencillo. Volvería a ir con ellos.”
+            </blockquote>
+            <figcaption class="mt-5 text-sm">
+              <span class="font-semibold">Diana Rojas</span>
+              <span class="block text-xs text-arena-300">Medellín</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PREGUNTAS FRECUENTES ============ -->
+    <section id="preguntas" class="scroll-mt-24 py-20 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-600 dark:text-terracota-300">Antes de salir</p>
+          <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Preguntas frecuentes.</h2>
+          <p class="mt-4 text-base leading-relaxed text-bosque-700 dark:text-arena-200">
+            Si no encuentra lo que busca, escríbanos y le respondemos sin compromiso.
+          </p>
+          <a href="#contacto" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-terracota-700 hover:text-terracota-800 dark:text-terracota-300 dark:hover:text-terracota-200">
+            Hacer una pregunta
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="divide-y divide-bosque-900/10 border-y border-bosque-900/10 dark:divide-arena-100/10 dark:border-arena-100/10">
+
+          <div>
+            <h3>
+              <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left" aria-expanded="false" aria-controls="faq-1">
+                <span class="text-base font-semibold sm:text-lg">¿Cómo reservo una ruta?</span>
+                <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-full border border-bosque-900/15 transition-transform duration-300 dark:border-arena-100/20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="faq-1" class="grid grid-rows-[0fr] transition-all duration-300" aria-hidden="true">
+              <div class="overflow-hidden">
+                <p class="pb-5 pr-12 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                  Llena el formulario de esta página con la ruta, la fecha y el número de personas.
+                  Le escribimos por correo o WhatsApp en menos de 24 horas para confirmar disponibilidad
+                  y enviarle los datos de pago.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>
+              <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left" aria-expanded="false" aria-controls="faq-2">
+                <span class="text-base font-semibold sm:text-lg">¿Qué pasa si llueve?</span>
+                <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-full border border-bosque-900/15 transition-transform duration-300 dark:border-arena-100/20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="faq-2" class="grid grid-rows-[0fr] transition-all duration-300" aria-hidden="true">
+              <div class="overflow-hidden">
+                <p class="pb-5 pr-12 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                  Las rutas se hacen con lluvia normal, siempre que no haya riesgo para el grupo.
+                  Si el clima impide salir, le proponemos otra fecha o le devolvemos el dinero del
+                  tour. En la Tatacoa la temporada seca va de junio a septiembre y de diciembre a marzo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>
+              <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left" aria-expanded="false" aria-controls="faq-3">
+                <span class="text-base font-semibold sm:text-lg">¿Los tours incluyen transporte?</span>
+                <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-full border border-bosque-900/15 transition-transform duration-300 dark:border-arena-100/20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="faq-3" class="grid grid-rows-[0fr] transition-all duration-300" aria-hidden="true">
+              <div class="overflow-hidden">
+                <p class="pb-5 pr-12 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                  Sí. Todas las rutas salen desde Neiva e incluyen transporte en camioneta o bus
+                  según el tamaño del grupo. También podemos recogerlo en el aeropuerto Benito Salas
+                  o en su hotel, sin costo adicional dentro de la ciudad.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>
+              <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left" aria-expanded="false" aria-controls="faq-4">
+                <span class="text-base font-semibold sm:text-lg">¿Puedo ir con niños o personas mayores?</span>
+                <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-full border border-bosque-900/15 transition-transform duration-300 dark:border-arena-100/20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="faq-4" class="grid grid-rows-[0fr] transition-all duration-300" aria-hidden="true">
+              <div class="overflow-hidden">
+                <p class="pb-5 pr-12 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                  Sí, pero hay que escoger bien la ruta. La Tatacoa y San Agustín son aptas para
+                  toda la familia. El Salto de Bordones tiene caminos destapados y pendientes, así
+                  que lo recomendamos solo para personas con buena movilidad. Cuéntenos las edades
+                  en el formulario y le armamos una opción.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>
+              <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left" aria-expanded="false" aria-controls="faq-5">
+                <span class="text-base font-semibold sm:text-lg">¿Cómo puedo pagar?</span>
+                <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-full border border-bosque-900/15 transition-transform duration-300 dark:border-arena-100/20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="faq-5" class="grid grid-rows-[0fr] transition-all duration-300" aria-hidden="true">
+              <div class="overflow-hidden">
+                <p class="pb-5 pr-12 text-sm leading-relaxed text-bosque-600 dark:text-arena-300">
+                  Aceptamos transferencia bancaria, Nequi y Daviplata. Para separar el cupo se
+                  abona el 50 % y el resto se paga el día de la salida. Le enviamos el comprobante
+                  y el plan detallado por correo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO / RESERVA ============ -->
+    <section id="contacto" class="scroll-mt-24 bg-bosque-950 py-20 text-arena-50 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-terracota-300">Reserve su ruta</p>
+          <h2 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Déjenos sus datos y le armamos el plan.</h2>
+          <p class="mt-4 max-w-md text-base leading-relaxed text-arena-200">
+            Cuéntenos a dónde quiere ir y con cuántas personas. Le respondemos en menos de
+            24 horas con disponibilidad, precio final y recomendaciones.
+          </p>
+
+          <div class="mt-10 space-y-5 text-sm">
+            <div class="flex gap-4">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-arena-50/10 text-terracota-300">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold text-arena-50">Oficina</p>
+                <p class="mt-1 text-arena-300">Calle 8 # 4-32, centro de Neiva, Huila</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-arena-50/10 text-terracota-300">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h1.2c.6 0 1.1.4 1.2 1l.6 2.4c.1.5-.1 1-.5 1.3l-1.3 1a12 12 0 0 0 5.6 5.6l1-1.3c.3-.4.8-.6 1.3-.5l2.4.6c.6.1 1 .6 1 1.2v1.2A2.5 2.5 0 0 1 18.5 20C10.5 20 4 13.5 4 5.5Z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold text-arena-50">WhatsApp</p>
+                <p class="mt-1 text-arena-300">+57 320 000 0000</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-arena-50/10 text-terracota-300">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold text-arena-50">Correo</p>
+                <p class="mt-1 text-arena-300">hola@huilaesencia.com</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-arena-50/10 text-terracota-300">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 2"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold text-arena-50">Horario</p>
+                <p class="mt-1 text-arena-300">Lunes a sábado, 8:00 a. m. a 6:00 p. m.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 rounded-2xl border border-arena-50/10 bg-arena-50/5 p-5">
+            <p class="text-sm leading-relaxed text-arena-200">
+              <span class="font-semibold text-arena-50">Nota:</span> este sitio es un proyecto académico.
+              Los precios y datos de contacto son de ejemplo y el formulario no envía información a un servidor.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] bg-arena-50 p-6 text-bosque-900 shadow-2xl shadow-bosque-950/40 sm:p-8 dark:bg-bosque-900 dark:text-arena-100">
+          <h3 class="font-display text-2xl font-semibold">Solicitar reserva</h3>
+          <p class="mt-1 text-sm text-bosque-600 dark:text-arena-300">Los campos con <span class="text-error dark:text-red-400">*</span> son obligatorios.</p>
+
+          <form id="form-reserva" class="mt-6" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="nombre" class="mb-1.5 block text-sm font-medium">Nombre completo <span class="text-error dark:text-red-400">*</span></label>
+                <input id="nombre" name="nombre" type="text" autocomplete="name" required
+                       aria-describedby="error-nombre"
+                       class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 placeholder:text-bosque-400 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100 dark:placeholder:text-arena-400"
+                       placeholder="Ej. Alejandro Bautista">
+                <p id="error-nombre" class="mt-1.5 hidden text-xs font-medium text-error dark:text-red-400" role="alert"></p>
+              </div>
+
+              <div>
+                <label for="correo" class="mb-1.5 block text-sm font-medium">Correo electrónico <span class="text-error dark:text-red-400">*</span></label>
+                <input id="correo" name="correo" type="email" autocomplete="email" required
+                       aria-describedby="error-correo"
+                       class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 placeholder:text-bosque-400 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100 dark:placeholder:text-arena-400"
+                       placeholder="nombre@correo.com">
+                <p id="error-correo" class="mt-1.5 hidden text-xs font-medium text-error dark:text-red-400" role="alert"></p>
+              </div>
+
+              <div>
+                <label for="telefono" class="mb-1.5 block text-sm font-medium">Teléfono <span class="font-normal text-bosque-500 dark:text-arena-400">(opcional)</span></label>
+                <input id="telefono" name="telefono" type="tel" autocomplete="tel"
+                       class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 placeholder:text-bosque-400 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100 dark:placeholder:text-arena-400"
+                       placeholder="300 000 0000">
+              </div>
+
+              <div>
+                <label for="destino" class="mb-1.5 block text-sm font-medium">Ruta de interés <span class="text-error dark:text-red-400">*</span></label>
+                <select id="destino" name="destino" required aria-describedby="error-destino"
+                        class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100">
+                  <option value="">Seleccione una ruta</option>
+                  <option value="tatacoa">Desierto de la Tatacoa</option>
+                  <option value="san-agustin">San Agustín</option>
+                  <option value="magdalena">Estrecho del Magdalena</option>
+                  <option value="bordones">Salto de Bordones</option>
+                  <option value="otro">Otra ruta / quiero asesoría</option>
+                </select>
+                <p id="error-destino" class="mt-1.5 hidden text-xs font-medium text-error dark:text-red-400" role="alert"></p>
+              </div>
+
+              <div>
+                <label for="fecha" class="mb-1.5 block text-sm font-medium">Fecha de viaje <span class="text-error dark:text-red-400">*</span></label>
+                <input id="fecha" name="fecha" type="date" required aria-describedby="error-fecha"
+                       class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100">
+                <p id="error-fecha" class="mt-1.5 hidden text-xs font-medium text-error dark:text-red-400" role="alert"></p>
+              </div>
+
+              <div>
+                <label for="personas" class="mb-1.5 block text-sm font-medium">Número de personas <span class="text-error dark:text-red-400">*</span></label>
+                <input id="personas" name="personas" type="number" min="1" max="10" step="1" inputmode="numeric" required
+                       aria-describedby="error-personas"
+                       class="w-full rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 placeholder:text-bosque-400 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100 dark:placeholder:text-arena-400"
+                       placeholder="1 a 10">
+                <p id="error-personas" class="mt-1.5 hidden text-xs font-medium text-error dark:text-red-400" role="alert"></p>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="mensaje" class="mb-1.5 block text-sm font-medium">Comentarios <span class="font-normal text-bosque-500 dark:text-arena-400">(opcional)</span></label>
+                <textarea id="mensaje" name="mensaje" rows="4" maxlength="500"
+                          class="w-full resize-y rounded-xl border border-arena-300 bg-white px-4 py-3 text-sm text-bosque-900 placeholder:text-bosque-400 focus:border-terracota-500 dark:border-bosque-700 dark:bg-bosque-950 dark:text-arena-100 dark:placeholder:text-arena-400"
+                          placeholder="Cuéntenos si viaja con niños, si necesita recogida en el aeropuerto o si tiene alguna alergia."></textarea>
+              </div>
+            </div>
+
+            <button id="btn-enviar" type="submit"
+                    class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-terracota-600 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-terracota-700 disabled:cursor-wait disabled:opacity-70 dark:bg-terracota-400 dark:text-bosque-950 dark:hover:bg-terracota-300">
+              <span id="btn-texto">Enviar solicitud</span>
+              <svg id="btn-spinner" viewBox="0 0 24 24" class="hidden h-4 w-4 animate-spin" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" d="M21 12a9 9 0 1 1-6.2-8.6"/>
+              </svg>
+            </button>
+
+            <p class="mt-3 text-center text-xs leading-relaxed text-bosque-500 dark:text-arena-400">
+              Al enviar acepta que le contactemos por correo o WhatsApp. No compartimos sus datos.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE DE PÁGINA ============ -->
+  <footer class="border-t border-arena-50/10 bg-bosque-950 text-arena-200">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div class="lg:col-span-2">
+          <a href="#inicio" class="inline-flex items-center gap-3">
+            <span class="grid h-11 w-11 place-items-center rounded-full bg-arena-50 text-bosque-950">
+              <svg viewBox="0 0 64 64" class="h-7 w-7" aria-hidden="true" fill="none">
+                <circle cx="43" cy="20" r="7" fill="#D97747"/>
+                <path d="M5 50 22 25l11 15 7-9 19 19H5Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="font-display text-xl font-semibold text-arena-50">Huila Esencia</span>
+          </a>
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-arena-300">
+            Turismo pequeño y con raíz en el Huila. Rutas por la Tatacoa, San Agustín,
+            el Magdalena y Bordones, guiadas por gente de la región.
+          </p>
+          <div class="mt-5 flex gap-3">
+            <a href="#" aria-label="Instagram de Huila Esencia" class="grid h-10 w-10 place-items-center rounded-full border border-arena-50/15 text-arena-200 transition-colors hover:border-terracota-300 hover:text-terracota-300">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook de Huila Esencia" class="grid h-10 w-10 place-items-center rounded-full border border-arena-50/15 text-arena-200 transition-colors hover:border-terracota-300 hover:text-terracota-300">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V4.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V11H7.4v3h2.7v8h3.4Z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp de Huila Esencia" class="grid h-10 w-10 place-items-center rounded-full border border-arena-50/15 text-arena-200 transition-colors hover:border-terracota-300 hover:text-terracota-300">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.4a8.5 8.5 0 1 1 15.5-4.5Z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.5c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.8c.1.2 0 .4-.1.6l-.6.7c-.1.2-.2.3 0 .6.5.9 1.3 1.7 2.2 2.1.3.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.8c.3.1.5.3.5.5 0 .2 0 1-.4 1.4-.4.4-1 .7-1.7.7-.7 0-2.6-.5-4.2-2.1-1.6-1.6-2.1-3.5-2.1-4.2 0-.7.3-1.3.7-1.7Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-arena-50">Explorar</p>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="#destinos" class="transition-colors hover:text-terracota-300">Destinos</a></li>
+            <li><a href="#nosotros" class="transition-colors hover:text-terracota-300">Nosotros</a></li>
+            <li><a href="#galeria" class="transition-colors hover:text-terracota-300">Galería</a></li>
+            <li><a href="#preguntas" class="transition-colors hover:text-terracota-300">Preguntas frecuentes</a></li>
+            <li><a href="#contacto" class="transition-colors hover:text-terracota-300">Reservar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-arena-50">Contacto</p>
+          <ul class="mt-4 space-y-3 text-sm text-arena-300">
+            <li>Calle 8 # 4-32<br>Neiva, Huila</li>
+            <li>+57 320 000 0000</li>
+            <li>hola@huilaesencia.com</li>
+            <li>Lun a sáb · 8 a. m. – 6 p. m.</li>
+          </ul>
+        </div>
+      </div>
+
+      <details class="mt-10 rounded-2xl border border-arena-50/10 bg-arena-50/5 px-5 py-4 text-sm">
+        <summary class="cursor-pointer font-medium text-arena-100">Créditos de las fotografías</summary>
+        <ul class="mt-3 space-y-2 text-xs leading-relaxed text-arena-300">
+          <li>“Desierto de La Tatacoa (Tatacoa Desert)” y “Desierto de La Tatacoa”, de SergiXCX y Sara Pons. CC BY-SA 4.0, Wikimedia Commons.</li>
+          <li>“Desierto de la Tatacoa - Cuzco”, de Catalina. CC BY-SA 4.0, Wikimedia Commons.</li>
+          <li>“Parque Arqueológico de San Agustín-Mesita A 06”, de Bernard Gagnon. CC BY-SA 4.0, Wikimedia Commons.</li>
+          <li>“Estrecho del Magdalena”, de Biodiego88. CC BY 4.0, Wikimedia Commons.</li>
+          <li>“Salto de Bordones, Isnos, Huila - panoramio”, de CarlosE Duarte. CC BY 3.0, Wikimedia Commons.</li>
+        </ul>
+        <p class="mt-3 text-xs text-arena-400">Las licencias completas están en <a href="assets/creditos.json" class="underline hover:text-terracota-300">assets/creditos.json</a>.</p>
+      </details>
+
+      <div class="mt-8 flex flex-col justify-between gap-3 border-t border-arena-50/10 pt-6 text-xs text-arena-400 sm:flex-row">
+        <p>© <span id="anio">2026</span> Huila Esencia. Todos los derechos reservados.</p>
+        <p>Proyecto académico hecho con HTML, Tailwind CSS 4 y JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL DE DESTINO ============ -->
+  <div id="modal-destino" class="fixed inset-0 z-[80] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="absolute inset-0 bg-bosque-950/80 backdrop-blur-sm" data-close-modal></div>
+    <div class="relative z-10 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-arena-50 shadow-2xl dark:bg-bosque-900">
+      <button type="button" id="modal-cerrar" class="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-bosque-950/60 text-arena-50 backdrop-blur-sm transition-colors hover:bg-bosque-950/80" aria-label="Cerrar ventana">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+      <img id="modal-imagen" src="assets/tatacoa.webp" alt="" class="h-56 w-full object-cover sm:h-64">
+      <div class="p-6 sm:p-8">
+        <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-terracota-700 dark:text-terracota-300">
+          <span id="modal-duracion">2 días</span>
+          <span aria-hidden="true">·</span>
+          <span id="modal-precio">$420.000 COP</span>
+        </div>
+        <h2 id="modal-titulo" class="mt-3 font-display text-3xl font-semibold">Desierto de la Tatacoa</h2>
+        <p id="modal-descripcion" class="mt-3 text-sm leading-relaxed text-bosque-700 dark:text-arena-200"></p>
+        <div class="mt-5">
+          <p class="text-sm font-semibold">Qué incluye</p>
+          <ul id="modal-incluye" class="mt-2 grid gap-2 text-sm text-bosque-600 sm:grid-cols-2 dark:text-arena-300"></ul>
+        </div>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <button type="button" id="modal-reservar" class="inline-flex flex-1 items-center justify-center rounded-full bg-terracota-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-terracota-700 dark:bg-terracota-400 dark:text-bosque-950 dark:hover:bg-terracota-300">
+            Reservar esta ruta
+          </button>
+          <button type="button" class="inline-flex items-center justify-center rounded-full border border-bosque-900/20 px-6 py-3 text-sm font-semibold transition-colors hover:bg-bosque-900/5 dark:border-arena-100/20 dark:hover:bg-arena-50/10" data-close-modal>
+            Seguir mirando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="pointer-events-none fixed bottom-4 left-4 right-4 z-[90] hidden translate-y-4 opacity-0 transition-all duration-300 sm:left-auto sm:right-6 sm:w-[380px]" role="status" aria-live="polite">
+    <div class="pointer-events-auto flex items-start gap-3 rounded-2xl border border-white/10 bg-exito p-4 text-white shadow-2xl">
+      <span class="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/15">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m5 12 4.5 4.5L19 7"/>
+        </svg>
+      </span>
+      <div class="min-w-0 flex-1">
+        <p class="text-sm font-semibold">Solicitud enviada</p>
+        <p id="toast-texto" class="mt-1 text-sm text-white/90">Gracias. Le responderemos muy pronto.</p>
+      </div>
+      <button type="button" id="toast-cerrar" class="rounded-lg p-1 text-white/80 transition-colors hover:bg-white/10 hover:text-white" aria-label="Cerrar notificación">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ---------- Utilidades ---------- */
+      const $ = (selector, scope = document) => scope.querySelector(selector);
+      const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+      /* ---------- Año del pie de página ---------- */
+      $("#anio").textContent = new Date().getFullYear();
+
+      /* ---------- Modo oscuro ---------- */
+      const html = document.documentElement;
+      const themeToggle = $("#theme-toggle");
+      const iconSun = $("#icon-sun");
+      const iconMoon = $("#icon-moon");
+
+      function pintarBotonTema() {
+        const oscuro = html.classList.contains("dark");
+        iconSun.classList.toggle("hidden", oscuro);
+        iconMoon.classList.toggle("hidden", !oscuro);
+        themeToggle.setAttribute("aria-label", oscuro ? "Activar modo claro" : "Activar modo oscuro");
+        themeToggle.setAttribute("aria-pressed", String(oscuro));
+      }
+
+      themeToggle.addEventListener("click", function () {
+        const oscuro = html.classList.toggle("dark");
+        try {
+          localStorage.setItem("tema", oscuro ? "oscuro" : "claro");
+        } catch (e) {}
+        pintarBotonTema();
+      });
+
+      pintarBotonTema();
+
+      /* ---------- Menú móvil ---------- */
+      const menuBtn = $("#menu-btn");
+      const mobileMenu = $("#mobile-menu");
+      const iconMenu = $("#icon-menu");
+      const iconClose = $("#icon-close");
+
+      function abrirMenu(abrir) {
+        mobileMenu.classList.toggle("hidden", !abrir);
+        iconMenu.classList.toggle("hidden", abrir);
+        iconClose.classList.toggle("hidden", !abrir);
+        menuBtn.setAttribute("aria-expanded", String(abrir));
+        menuBtn.setAttribute("aria-label", abrir ? "Cerrar menú" : "Abrir menú");
+      }
+
+      menuBtn.addEventListener("click", function () {
+        abrirMenu(mobileMenu.classList.contains("hidden"));
+      });
+
+      $$(".menu-link").forEach(function (link) {
+        link.addEventListener("click", function () {
+          abrirMenu(false);
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+          abrirMenu(false);
+          menuBtn.focus();
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 1024) abrirMenu(false);
+      });
+
+      /* ---------- Sombra del encabezado ---------- */
+      const header = $("#site-header");
+      function revisarScroll() {
+        header.classList.toggle("shadow-suave", window.scrollY > 12);
+      }
+      window.addEventListener("scroll", revisarScroll, { passive: true });
+      revisarScroll();
+
+      /* ---------- Enlace activo según la sección ---------- */
+      const enlacesNav = $$("[data-nav]");
+      const secciones = enlacesNav
+        .map(function (link) { return document.getElementById(link.dataset.nav); })
+        .filter(Boolean);
+
+      if ("IntersectionObserver" in window) {
+        const observador = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (entrada) {
+            if (!entrada.isIntersecting) return;
+            enlacesNav.forEach(function (link) {
+              const activo = link.dataset.nav === entrada.target.id;
+              link.classList.toggle("text-terracota-600", activo);
+              link.classList.toggle("dark:text-terracota-300", activo);
+              if (activo) {
+                link.setAttribute("aria-current", "true");
+              } else {
+                link.removeAttribute("aria-current");
+              }
+            });
+          });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+        secciones.forEach(function (seccion) { observador.observe(seccion); });
+      }
+
+      /* ---------- Datos de los destinos ---------- */
+      const destinos = {
+        tatacoa: {
+          titulo: "Desierto de la Tatacoa",
+          imagen: "assets/tatacoa.webp",
+          alt: "Laberintos de tierra roja del Desierto de la Tatacoa",
+          duracion: "2 días / 1 noche",
+          precio: "$420.000 COP por persona",
+          descripcion: "Salimos de Neiva hacia Villavieja, cruzamos el desierto rojo y dormimos cerca del observatorio astronómico. La idea es caminar temprano, descansar en la tarde y quedarnos viendo estrellas hasta que el cuerpo aguante. Al otro día pasamos por el sector de Cuzco y volvemos.",
+          incluye: ["Transporte desde Neiva", "Guía local certificado", "Alojamiento una noche", "Desayuno y almuerzo", "Entrada al observatorio", "Seguro de viaje"]
+        },
+        "san-agustin": {
+          titulo: "Parque Arqueológico de San Agustín",
+          imagen: "assets/san-agustin.webp",
+          alt: "Estatua de piedra del Parque Arqueológico de San Agustín",
+          duracion: "1 día completo",
+          precio: "$180.000 COP por persona",
+          descripcion: "Viajamos al sur del Huila para recorrer el parque arqueológico con un guía que explica la historia de las estatuas, las tumbas y los pueblos que habitaron la zona. Es un plan de caminata suave, con tiempo para tomar fotos y almorzar en el pueblo.",
+          incluye: ["Transporte desde Neiva", "Guía local certificado", "Entrada al parque", "Almuerzo típico", "Seguro de viaje"]
+        },
+        magdalena: {
+          titulo: "Estrecho del Magdalena",
+          imagen: "assets/estrecho-magdalena.webp",
+          alt: "El río Magdalena pasando entre rocas en el Estrecho",
+          duracion: "Medio día",
+          precio: "$120.000 COP por persona",
+          descripcion: "Un paseo corto para ver de cerca el punto donde el río Magdalena se reduce a unos dos metros entre las rocas. Caminamos por el sendero, escuchamos el agua y paramos en un mirador. Es ideal para quien tiene pocas horas o quiere un plan tranquilo.",
+          incluye: ["Transporte desde Neiva", "Guía local", "Entrada al sendero", "Refrigerio", "Seguro de viaje"]
+        },
+        bordones: {
+          titulo: "Salto de Bordones",
+          imagen: "assets/salto-bordones.webp",
+          alt: "Cascada del Salto de Bordones rodeada de selva",
+          duracion: "1 día completo",
+          precio: "$150.000 COP por persona",
+          descripcion: "Nos vamos hasta Isnos para ver una de las caídas de agua más altas del país. El camino tiene partes destapadas y pendientes, pero el paisaje vale la pena. Almorzamos en la zona y, si el tiempo alcanza, pasamos por el Estrecho del Magdalena.",
+          incluye: ["Transporte desde Neiva", "Guía local", "Almuerzo", "Entrada al mirador", "Seguro de viaje"]
+        }
+      };
+
+      /* ---------- Modal de destino ---------- */
+      const modal = $("#modal-destino");
+      const modalTitulo = $("#modal-titulo");
+      const modalImagen = $("#modal-imagen");
+      const modalDuracion = $("#modal-duracion");
+      const modalPrecio = $("#modal-precio");
+      const modalDescripcion = $("#modal-descripcion");
+      const modalIncluye = $("#modal-incluye");
+      const modalCerrar = $("#modal-cerrar");
+      const modalReservar = $("#modal-reservar");
+      let ultimoFoco = null;
+      let destinoActual = null;
+
+      function abrirModal(id) {
+        const datos = destinos[id];
+        if (!datos) return;
+
+        destinoActual = id;
+        ultimoFoco = document.activeElement;
+        modalTitulo.textContent = datos.titulo;
+        modalImagen.src = datos.imagen;
+        modalImagen.alt = datos.alt;
+        modalDuracion.textContent = datos.duracion;
+        modalPrecio.textContent = datos.precio;
+        modalDescripcion.textContent = datos.descripcion;
+        modalIncluye.innerHTML = "";
+
+        datos.incluye.forEach(function (item) {
+          const li = document.createElement("li");
+          li.className = "flex items-start gap-2";
+          li.innerHTML = '<svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0 text-exito dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 4.5 4.5L19 7"/></svg><span></span>';
+          li.querySelector("span").textContent = item;
+          modalIncluye.appendChild(li);
+        });
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+        modalCerrar.focus();
+      }
+
+      function cerrarModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+        if (ultimoFoco) ultimoFoco.focus();
+      }
+
+      $$("[data-destino]").forEach(function (boton) {
+        boton.addEventListener("click", function () {
+          abrirModal(boton.dataset.destino);
+        });
+      });
+
+      modalCerrar.addEventListener("click", cerrarModal);
+      $$("[data-close-modal]").forEach(function (elemento) {
+        elemento.addEventListener("click", cerrarModal);
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (modal.classList.contains("hidden")) return;
+
+        if (event.key === "Escape") {
+          cerrarModal();
+          return;
+        }
+
+        if (event.key !== "Tab") return;
+
+        const enfocables = $$('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])', modal)
+          .filter(function (elemento) { return elemento.offsetParent !== null; });
+
+        if (!enfocables.length) return;
+        const primero = enfocables[0];
+        const ultimo = enfocables[enfocables.length - 1];
+
+        if (event.shiftKey && document.activeElement === primero) {
+          event.preventDefault();
+          ultimo.focus();
+        } else if (!event.shiftKey && document.activeElement === ultimo) {
+          event.preventDefault();
+          primero.focus();
+        }
+      });
+
+      modalReservar.addEventListener("click", function () {
+        const select = $("#destino");
+        if (destinoActual && destinos[destinoActual]) {
+          select.value = destinoActual;
+          select.dispatchEvent(new Event("change"));
+        }
+        cerrarModal();
+        const reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        $("#contacto").scrollIntoView({
+          behavior: reducirMovimiento ? "auto" : "smooth",
+          block: "start"
+        });
+        setTimeout(function () { select.focus({ preventScroll: true }); }, reducirMovimiento ? 0 : 600);
+      });
+
+      /* ---------- Acordeón de preguntas ---------- */
+      const botonesFaq = $$(".faq-btn");
+
+      botonesFaq.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+          const abierto = boton.getAttribute("aria-expanded") === "true";
+
+          botonesFaq.forEach(function (otro) {
+            const panel = document.getElementById(otro.getAttribute("aria-controls"));
+            const icono = otro.querySelector(".faq-icon");
+            otro.setAttribute("aria-expanded", "false");
+            panel.classList.remove("grid-rows-[1fr]");
+            panel.classList.add("grid-rows-[0fr]");
+            panel.setAttribute("aria-hidden", "true");
+            icono.classList.remove("rotate-45");
+          });
+
+          if (!abierto) {
+            const panel = document.getElementById(boton.getAttribute("aria-controls"));
+            const icono = boton.querySelector(".faq-icon");
+            boton.setAttribute("aria-expanded", "true");
+            panel.classList.remove("grid-rows-[0fr]");
+            panel.classList.add("grid-rows-[1fr]");
+            panel.setAttribute("aria-hidden", "false");
+            icono.classList.add("rotate-45");
+          }
+        });
+      });
+
+      /* ---------- Fecha mínima del formulario ---------- */
+      const campoFecha = $("#fecha");
+      const hoy = new Date();
+      const fechaLocal = new Date(hoy.getTime() - hoy.getTimezoneOffset() * 60000);
+      campoFecha.min = fechaLocal.toISOString().slice(0, 10);
+
+      /* ---------- Validación del formulario ---------- */
+      const form = $("#form-reserva");
+      const btnEnviar = $("#btn-enviar");
+      const btnTexto = $("#btn-texto");
+      const btnSpinner = $("#btn-spinner");
+      const toast = $("#toast");
+      const toastTexto = $("#toast-texto");
+      let temporizadorToast = null;
+
+      function mostrarError(id, mensaje) {
+        const campo = document.getElementById(id);
+        const error = document.getElementById("error-" + id);
+        if (!campo || !error) return;
+
+        if (mensaje) {
+          error.textContent = mensaje;
+          error.classList.remove("hidden");
+          campo.setAttribute("aria-invalid", "true");
+          campo.classList.add("border-error", "dark:border-red-400");
+          campo.classList.remove("border-arena-300", "dark:border-bosque-700");
+        } else {
+          error.textContent = "";
+          error.classList.add("hidden");
+          campo.removeAttribute("aria-invalid");
+          campo.classList.remove("border-error", "dark:border-red-400");
+          campo.classList.add("border-arena-300", "dark:border-bosque-700");
+        }
+      }
+
+      function validarNombre() {
+        const valor = $("#nombre").value.trim();
+        if (valor.length < 3) return "Escriba su nombre completo (mínimo 3 letras).";
+        if (!/^[a-zA-ZÁÉÍÓÚáéíóúÑñÜü\s'.-]+$/.test(valor)) return "El nombre solo debe tener letras y espacios.";
+        return "";
+      }
+
+      function validarCorreo() {
+        const valor = $("#correo").value.trim();
+        if (!valor) return "El correo es obligatorio.";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor)) return "Escriba un correo válido, por ejemplo nombre@correo.com.";
+        return "";
+      }
+
+      function validarDestino() {
+        return $("#destino").value ? "" : "Seleccione la ruta que le interesa.";
+      }
+
+      function validarFecha() {
+        const valor = campoFecha.value;
+        if (!valor) return "Seleccione la fecha del viaje.";
+        const fecha = new Date(valor + "T00:00:00");
+        const hoyCero = new Date();
+        hoyCero.setHours(0, 0, 0, 0);
+        if (fecha < hoyCero) return "La fecha no puede ser anterior a hoy.";
+        return "";
+      }
+
+      function validarPersonas() {
+        const valor = Number($("#personas").value);
+        if (!valor) return "Indique cuántas personas viajan.";
+        if (!Number.isInteger(valor) || valor < 1 || valor > 10) return "El número debe estar entre 1 y 10.";
+        return "";
+      }
+
+      const validaciones = {
+        nombre: validarNombre,
+        correo: validarCorreo,
+        destino: validarDestino,
+        fecha: validarFecha,
+        personas: validarPersonas
+      };
+
+      Object.keys(validaciones).forEach(function (id) {
+        const campo = document.getElementById(id);
+        campo.addEventListener("input", function () { mostrarError(id, ""); });
+        campo.addEventListener("change", function () { mostrarError(id, ""); });
+      });
+
+      function mostrarToast(nombre) {
+        toastTexto.textContent = "Gracias, " + nombre + ". Le responderemos en menos de 24 horas.";
+        toast.classList.remove("hidden");
+        requestAnimationFrame(function () {
+          toast.classList.remove("translate-y-4", "opacity-0");
+          toast.classList.add("translate-y-0", "opacity-100");
+        });
+        clearTimeout(temporizadorToast);
+        temporizadorToast = setTimeout(ocultarToast, 4000);
+      }
+
+      function ocultarToast() {
+        toast.classList.add("translate-y-4", "opacity-0");
+        toast.classList.remove("translate-y-0", "opacity-100");
+        setTimeout(function () { toast.classList.add("hidden"); }, 300);
+      }
+
+      $("#toast-cerrar").addEventListener("click", function () {
+        clearTimeout(temporizadorToast);
+        ocultarToast();
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let primerError = null;
+
+        Object.keys(validaciones).forEach(function (id) {
+          const mensaje = validaciones[id]();
+          mostrarError(id, mensaje);
+          if (mensaje && !primerError) primerError = document.getElementById(id);
+        });
+
+        if (primerError) {
+          primerError.focus();
+          return;
+        }
+
+        const nombre = $("#nombre").value.trim().split(" ")[0];
+        btnEnviar.disabled = true;
+        btnTexto.textContent = "Enviando...";
+        btnSpinner.classList.remove("hidden");
+
+        setTimeout(function () {
+          btnEnviar.disabled = false;
+          btnTexto.textContent = "Enviar solicitud";
+          btnSpinner.classList.add("hidden");
+          form.reset();
+          mostrarToast(nombre);
+        }, 900);
+      });
+
+      /* ---------- Cerrar toast con Escape ---------- */
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !toast.classList.contains("hidden")) {
+          clearTimeout(temporizadorToast);
+          ocultarToast();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
